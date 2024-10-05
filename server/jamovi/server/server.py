@@ -555,9 +555,9 @@ class DownloadFileHandler(TornadosStaticFileHandler):
     def set_extra_headers(self, path):
         filename = self.get_argument('filename', None)
         if filename:
-            self.set_header(
-                'Content-Disposition',
-                f'attachment; filename="{ filename }"')
+            encoded_filename = urlparse.quote(filename)
+            self.set_header("Content-Disposition", f"attachment; filename*=UTF-8''{encoded_filename}")
+            self.set_header('Content-Type', 'application/octet-stream; charset=utf-8')
 
 
 class EndHandler(SessHandler):
