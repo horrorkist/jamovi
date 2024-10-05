@@ -702,6 +702,8 @@ class Instance:
             else:
                 file_sync = None
 
+            
+
             if file_sync:
                 with NamedTemporaryFile(suffix='.omv', delete=False) as file:
                     path = file.name

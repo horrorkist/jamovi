@@ -400,7 +400,6 @@ class OpenHandler(RequestHandler):
 class SaveHandler(SessHandler):
 
     async def post(self, instance_id: str):
-
         instance = self._session.get(instance_id)
         if instance is None:
             self.set_status(404)
